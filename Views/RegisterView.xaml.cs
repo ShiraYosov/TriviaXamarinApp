@@ -15,8 +15,9 @@ namespace TriviaXamarinApp.Views
     {
         public RegisterView()
         {
-            InitializeComponent();
             this.BindingContext = new RegisterViewModel();
+            this.Title = "Register";
+            InitializeComponent();
         }
     }
 }

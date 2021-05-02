@@ -24,7 +24,7 @@
 
                 <Button x:Name="Login" Text="Login" BackgroundColor="WhiteSmoke" Clicked="Login_Clicked" Grid.Column="0" Grid.Row="1"/>
                 <Button x:Name="Register" Text="Register" BackgroundColor="WhiteSmoke" Clicked="Register_Clicked" Grid.Column="0" Grid.Row="2"/>
-                <Button x:Name="ViewQuestions" Text="View Questions" BackgroundColor="WhiteSmoke" Clicked="ViewQuestions_Clicked" Grid.Column="0" Grid.Row="3"/>
+                <Button x:Name="ViewQuestions" Text="Play" BackgroundColor="WhiteSmoke" Clicked="ViewQuestions_Clicked" Grid.Column="0" Grid.Row="3"/>
 
 
             </Grid>

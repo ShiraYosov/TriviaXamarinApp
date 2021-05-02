@@ -25,6 +25,20 @@ namespace TriviaXamarinApp.ViewModels
         }
 
 
+        private string message;
+        public string Message
+        {
+            get { return this.message; }
+
+            set
+            {
+                if (this.message != value)
+                {
+                    this.message = value;
+                    OnPropertyChanged(nameof(Message));
+                }
+            }
+        }
 
         private string email;
         public string Email
@@ -57,27 +71,29 @@ namespace TriviaXamarinApp.ViewModels
         }
         public LoginViewModel()
         {
-            this.email = "";
+            this.Email = "";
             this.Password = "";
+            this.Message = "";
         }
 
-        ICommand LoginCommand => new Command(Login);
+       public ICommand LoginCommand => new Command(Login);
 
         public async void Login()
         {
             TriviaWebAPIProxy proxy = TriviaWebAPIProxy.CreateProxy();
             User u = await proxy.LoginAsync(this.email, this.password);
-            if (u == null) { Console.WriteLine("INVALID USER INFO"); }
-            else
+           
+            if(u != null)
             {
                 App a = (App)App.Current;
                 Page p = new QuestionsView();
                 a.User.Email = this.email;
                 a.User.Password = this.password;
-
+                
                 await a.MainPage.Navigation.PushAsync(p);
 
             }
+            else { this.message= "INVALID USER INFO"; }
 
         }
     }
