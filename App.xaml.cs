@@ -11,13 +11,12 @@ namespace TriviaXamarinApp
 {
     public partial class App : Application
     {
-        static public User User;
+        public User User { get; set; }
         public App()
         {
             InitializeComponent();
             User = new User();
             Page p = new HomePageView();
-            MainPage = p;
             MainPage = new NavigationPage(p);
 
         }

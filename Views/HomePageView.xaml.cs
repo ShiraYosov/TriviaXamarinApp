@@ -15,6 +15,25 @@ namespace TriviaXamarinApp.Views
         public HomePageView()
         {
             InitializeComponent();
+            this.Title = "Home Page";
+        }
+
+        private void Login_Clicked(object sender, EventArgs e)
+        {
+            Page p = new LoginView();
+            App.Current.MainPage.Navigation.PushAsync(p);
+        }
+
+        private void Register_Clicked(object sender, EventArgs e)
+        {
+            Page p = new RegisterView();
+            App.Current.MainPage.Navigation.PushAsync(p);
+        }
+
+        private void ViewQuestions_Clicked(object sender, EventArgs e)
+        {
+            Page p = new QuestionsView();
+            App.Current.MainPage.Navigation.PushAsync(p);
         }
     }
 }

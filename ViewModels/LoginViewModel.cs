@@ -70,11 +70,12 @@ namespace TriviaXamarinApp.ViewModels
             if (u == null) { Console.WriteLine("INVALID USER INFO"); }
             else
             {
+                App a = (App)App.Current;
                 Page p = new QuestionsView();
-                App.User.Email = this.email;
-                App.User.Password = this.password;
+                a.User.Email = this.email;
+                a.User.Password = this.password;
 
-                await App.Current.MainPage.Navigation.PushAsync(p);
+                await a.MainPage.Navigation.PushAsync(p);
 
             }
 

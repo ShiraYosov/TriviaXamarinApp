@@ -6,10 +6,29 @@
              mc:Ignorable="d"
              x:Class="TriviaXamarinApp.Views.HomePageView">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout BackgroundColor="LightBlue">
+
+            <Label Text="Home Page" TextColor="SeaShell" FontSize="50" HorizontalTextAlignment="Center" FontAttributes="Bold" FontFamily="Calibri"></Label>
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                   
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="Login" Text="Login" BackgroundColor="WhiteSmoke" Clicked="Login_Clicked" Grid.Column="0" Grid.Row="1"/>
+                <Button x:Name="Register" Text="Register" BackgroundColor="WhiteSmoke" Clicked="Register_Clicked" Grid.Column="0" Grid.Row="2"/>
+                <Button x:Name="ViewQuestions" Text="View Questions" BackgroundColor="WhiteSmoke" Clicked="ViewQuestions_Clicked" Grid.Column="0" Grid.Row="3"/>
+
+
+            </Grid>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
