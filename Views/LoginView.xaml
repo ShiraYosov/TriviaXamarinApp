@@ -35,8 +35,8 @@
             </Grid>
 
 
-            <Button x:Name="submit" Text="Submit"  Command="{Binding LoginCommand}" HorizontalOptions="Center" BackgroundColor="MediumSeaGreen"/>
-            <Label x:Name="msg" Text="{Binding Message}"/>
+            <Button x:Name="submit" Text="Submit"  Command="{Binding LoginCommand}" HorizontalOptions="Center" FontSize="20" FontAttributes="Bold" BackgroundColor="MediumSeaGreen"/>
+            <Label x:Name="msg" Text="{Binding Message}" HorizontalOptions="Center" TextColor="Red" FontSize="30"/>
 
         </StackLayout>
     </ContentPage.Content>

@@ -7,11 +7,12 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using TriviaXamarinApp.Services;
 using TriviaXamarinApp.Models;
+using TriviaXamarinApp.Views;
 
 
 namespace TriviaXamarinApp.ViewModels
 {
-    class RegisterViewModel: INotifyPropertyChanged
+    class RegisterViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
@@ -30,6 +31,21 @@ namespace TriviaXamarinApp.ViewModels
                 {
                     this.nickName = value;
                     OnPropertyChanged(nameof(NickName));
+                }
+            }
+        }
+
+        private string message;
+        public string Message
+        {
+            get { return this.message; }
+
+            set
+            {
+                if (this.message != value)
+                {
+                    this.message = value;
+                    OnPropertyChanged(nameof(Message));
                 }
             }
         }
@@ -69,9 +85,10 @@ namespace TriviaXamarinApp.ViewModels
             this.NickName = "";
             this.Password = "";
             this.Email = "";
+            this.Message = "";
         }
 
-        ICommand RegisterCommand => new Command(Register);
+        public ICommand RegisterCommand => new Command(Register);
 
         public async void Register()
         {
@@ -80,12 +97,22 @@ namespace TriviaXamarinApp.ViewModels
             {
                 NickName = nickName,
                 Password = password,
-                Email = email
+                Email = email,
+                Questions = null
             };
 
             bool ok = await proxy.RegisterUser(u);
-            if (ok) { Console.WriteLine("Registered successfully"); }
-            else { Console.WriteLine("Failed to register"); }
+            if (ok)
+            {
+                Page p = new UsersPageView();
+                App a = (App)App.Current;
+                a.User.Email = this.email;
+                a.User.Password = this.password;
+                a.User.NickName = this.nickName;
+
+                await a.MainPage.Navigation.PushAsync(p);
+            }
+            else { this.Message = "Failed to register"; }
         }
     }
 }
