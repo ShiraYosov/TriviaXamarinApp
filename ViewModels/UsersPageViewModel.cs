@@ -20,7 +20,7 @@ namespace TriviaXamarinApp.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public ObservableCollection<AmericanQuestion> QuestionsList { get; }
+        public ObservableCollection<AmericanQuestion> QuestionsList { get; set; }
 
         public UsersPageViewModel()
         {

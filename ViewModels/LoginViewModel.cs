@@ -82,15 +82,14 @@ namespace TriviaXamarinApp.ViewModels
         public async void Login()
         {
             TriviaWebAPIProxy proxy = TriviaWebAPIProxy.CreateProxy();
-            User u = await proxy.LoginAsync(this.email, this.password);
+            User u = await proxy.LoginAsync(Email, Password);
 
             if (u != null)
             {
                 App a = (App)App.Current;
+                a.User = u;
                 Page p = new UsersPageView();
-                a.User.Email = this.email;
-                a.User.Password = this.password;
-
+                
                 await a.MainPage.Navigation.PushAsync(p);
 
             }

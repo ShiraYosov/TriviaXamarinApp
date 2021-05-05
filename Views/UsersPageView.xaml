@@ -5,35 +5,22 @@
     <ContentPage.Content>
 
 
-        <StackLayout BackgroundColor="LightBlue">
-            <Label Text="Register" TextColor="SeaShell" FontSize="50" HorizontalTextAlignment="Center" FontAttributes="Bold" FontFamily="Calibri"></Label>
-
-            <CollectionView x:Name="collectionName" 
-                            ItemsSource="{Binding QuestionsList}">
-
+        <StackLayout BackgroundColor="LightBlue" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+            <CollectionView ItemsSource="{Binding QuestionsList}" x:Name="collec">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <SwipeView>
                             <SwipeView.LeftItems>
                                 <SwipeItems>
                                     <SwipeItem Text="Delete"
-                                           IconImageSource="delete.png"
-                                           BackgroundColor="LightPink"
-                                           Command="{Binding Source={x:Reference collectionName}, Path=BindingContext.DeleteCommand}"
-                                           CommandParameter="{Binding}" />
+                                               IconImageSource="delete.png"
+                                               BackgroundColor="LightGray"
+                                               Command="{Binding Source={x:Reference collec}, Path= BindingContext.DeleteComand}"
+                                               CommandParameter="{Binding}"/>
                                 </SwipeItems>
+                                
                             </SwipeView.LeftItems>
-                            <Grid Padding="10" HorizontalOptions="FillAndExpand">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" Grid.Row="0"
-                                   Text="{Binding QText}"/>
-
-                            </Grid>
+                            <Button Text="{Binding QText}" Padding="0"/>
                         </SwipeView>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
