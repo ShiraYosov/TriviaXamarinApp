@@ -6,7 +6,7 @@
 
 
         <StackLayout BackgroundColor="LightBlue" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-            <Label Text="My questions:" TextColor="Black" FontSize="Medium" FontAttributes="Bold" FontFamily="Calibri" />
+            <Label Text="My questions:" TextColor="Black" FontSize="Large" FontAttributes="Bold" FontFamily="Calibri" />
             <CollectionView ItemsSource="{Binding QuestionsList}" x:Name="collec">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -15,13 +15,25 @@
                                 <SwipeItems>
                                     <SwipeItem Text="Delete"
                                                IconImageSource="bin.png"
-                                               BackgroundColor="LightGray"
+                                               BackgroundColor="OrangeRed"
                                                Command="{Binding Source={x:Reference collec}, Path= BindingContext.DeleteComand}"
                                                CommandParameter="{Binding}"/>
                                 </SwipeItems>
 
                             </SwipeView.LeftItems>
-                            <Button x:Name="Question" Text="{Binding QText}" Padding="0" Clicked="Question_Clicked" CommandParameter="{Binding}" />
+                           
+                            <Grid Padding="10" HorizontalOptions="FillAndExpand">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                               </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    
+                                </Grid.ColumnDefinitions>
+                                <Button x:Name="Question" Text="{Binding QText}" Padding="0" Clicked="Question_Clicked" Grid.Column="0" Grid.Row="0" CommandParameter="{Binding}" />
+                                
+                               </Grid>
+                                
                         </SwipeView>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

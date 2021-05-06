@@ -39,15 +39,12 @@ namespace TriviaXamarinApp.ViewModels
         }
 
         public ICommand DeleteCommand => new Command<AmericanQuestion>(RemoveQuestion);
-        void RemoveQuestion(AmericanQuestion aq)
+        public async void RemoveQuestion(AmericanQuestion aq)
         {
-            if (QuestionsList.Contains(aq))
-            {
-                QuestionsList.Remove(aq);
-            }
-
+            TriviaWebAPIProxy proxy = TriviaWebAPIProxy.CreateProxy();
+            await proxy.DeleteQuestion(aq);
         }
-        
-        public Action<Page> NavigateToPageEvent;
+
+
     }
 }
