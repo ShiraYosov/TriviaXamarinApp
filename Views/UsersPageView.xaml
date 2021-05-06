@@ -6,6 +6,7 @@
 
 
         <StackLayout BackgroundColor="LightBlue" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+            <Label Text="My questions:" TextColor="Black" FontSize="Medium" FontAttributes="Bold" FontFamily="Calibri" />
             <CollectionView ItemsSource="{Binding QuestionsList}" x:Name="collec">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -13,12 +14,12 @@
                             <SwipeView.LeftItems>
                                 <SwipeItems>
                                     <SwipeItem Text="Delete"
-                                               IconImageSource="delete.png"
+                                               IconImageSource="bin.png"
                                                BackgroundColor="LightGray"
                                                Command="{Binding Source={x:Reference collec}, Path= BindingContext.DeleteComand}"
                                                CommandParameter="{Binding}"/>
                                 </SwipeItems>
-                                
+
                             </SwipeView.LeftItems>
                             <Button Text="{Binding QText}" Padding="0"/>
                         </SwipeView>

@@ -47,5 +47,7 @@ namespace TriviaXamarinApp.ViewModels
             }
 
         }
+        
+        public Action<Page> NavigateToPageEvent;
     }
 }
