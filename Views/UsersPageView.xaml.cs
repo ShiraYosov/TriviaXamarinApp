@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TriviaXamarinApp.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using TriviaXamarinApp.Models;
 
 namespace TriviaXamarinApp.Views
 {
@@ -14,19 +15,32 @@ namespace TriviaXamarinApp.Views
     {
         public UsersPageView()
         {
-            UsersPageViewModel context = new UsersPageViewModel();
-            context.NavigateToPageEvent += NavigateToAsync;
-            this.BindingContext = context; 
-            
+            this.BindingContext = new UsersPageViewModel();
+
             this.Title = "Users Page";
             InitializeComponent();
         }
 
-        public async void NavigateToAsync(Page p)
+       
+        private void Question_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(p);
+            if (sender is Button)
+            {
+                Button b = (Button)sender;
+                AmericanQuestion chosenQuestion = (AmericanQuestion)b.BindingContext;
+
+                Page QuestionPage = new TheQuestionView();
+                TheQuestionViewModel QuestionContext = new TheQuestionViewModel
+                {
+                    QuestionText = chosenQuestion.QText,
+                    CorrectAnswer = chosenQuestion.CorrectAnswer,
+                    OtherAnswers = chosenQuestion.OtherAnswers
+                };
+                QuestionPage.BindingContext = QuestionContext;
+
+                App.Current.MainPage.Navigation.PushAsync(QuestionPage);
+            }
         }
 
-       
     }
 }

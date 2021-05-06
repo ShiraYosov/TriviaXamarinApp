@@ -21,6 +21,6 @@ namespace TriviaXamarinApp.ViewModels
 
         public string QuestionText {get;set;}
         public string CorrectAnswer { get; set; }
-        public ObservableCollection<string> OtherAnswers { get; set; }
+        public string[] OtherAnswers { get; set; }
     }
 }

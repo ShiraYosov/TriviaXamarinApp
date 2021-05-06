@@ -21,7 +21,7 @@
                                 </SwipeItems>
 
                             </SwipeView.LeftItems>
-                            <Button Text="{Binding QText}" Padding="0"/>
+                            <Button x:Name="Question" Text="{Binding QText}" Padding="0" Clicked="Question_Clicked" CommandParameter="{Binding}" />
                         </SwipeView>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
