@@ -8,7 +8,7 @@
 
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="2*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
@@ -19,10 +19,10 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <Label Text="{Binding CorrectAnswer}" TextColor="Green" FontSize="Medium" FontAttributes="Italic" Grid.Column="0" Grid.Row="1"/>
-                <Label Text="{Binding OtherAnswers[0]}" TextColor="Black" FontSize="Medium"  Grid.Column="0" Grid.Row="2"/>
-                <Label Text="{Binding OtherAnswers[1]}" TextColor="Black" FontSize="Medium"  Grid.Column="0" Grid.Row="3"/>
-                <Label Text="{Binding OtherAnswers[2]}" TextColor="Black" FontSize="Medium"  Grid.Column="0" Grid.Row="4"/>
+                <Label Text="{Binding CorrectAnswer}" TextColor="Black" BackgroundColor="Green" HorizontalTextAlignment="Center" FontSize="Medium" FontAttributes="Italic" Grid.Column="0" Grid.Row="1"/>
+                <Label Text="{Binding OtherAnswers[0]}" TextColor="Black" FontSize="Medium" HorizontalTextAlignment="Center"  Grid.Column="0" Grid.Row="2"/>
+                <Label Text="{Binding OtherAnswers[1]}" TextColor="Black" FontSize="Medium" HorizontalTextAlignment="Center" Grid.Column="0" Grid.Row="3"/>
+                <Label Text="{Binding OtherAnswers[2]}" TextColor="Black" FontSize="Medium" HorizontalTextAlignment="Center" Grid.Column="0" Grid.Row="4"/>
             </Grid>
         </StackLayout>
     </ContentPage.Content>
