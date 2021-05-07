@@ -8,7 +8,7 @@
     <ContentPage.Content>
         <StackLayout BackgroundColor="LightBlue">
 
-            <Label x:Name="qtext" Text="{Binding AText}" TextColor="Black"/>
+            <Label x:Name="qtext" Text="{Binding AText}" TextColor="Black" FontSize="Large"/>
 
             <CollectionView ItemsSource="{Binding AnswersList}" x:Name="collec">
                 <CollectionView.ItemTemplate>
