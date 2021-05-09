@@ -4,22 +4,33 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="TriviaXamarinApp.Views.QuestionsView">
+             x:Class="TriviaXamarinApp.Views.QuestionsView"
+             x:Name="ThePage">
     <ContentPage.Content>
-        <StackLayout BackgroundColor="LightBlue">
+        <StackLayout BackgroundColor="LightBlue" >
 
             <Label x:Name="qtext" Text="{Binding AText}" TextColor="Black" FontSize="Large"/>
 
             <CollectionView ItemsSource="{Binding AnswersList}" x:Name="collec">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Button Text="{Binding}" Padding="0"></Button>
 
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="5*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <Button x:Name="Answer" Grid.Column="1" Grid.Row="0"  Text="{Binding Answer}" FontSize="20" Padding="0" TextColor="{Binding Color}" Command="{Binding Source={x:Reference ThePage}, Path=BindingContext.CheckCommand}" CommandParameter="{Binding}"/>
+                        </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
-
             </CollectionView>
-
+            <Button x:Name="Next" Text="Next"  Command="{Binding NextCommand}" FontSize="20" FontAttributes="Bold" BackgroundColor="MediumSeaGreen"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

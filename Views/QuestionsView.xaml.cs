@@ -14,9 +14,11 @@ namespace TriviaXamarinApp.Views
     {
         public QuestionsView()
         {
-            this.BindingContext = new QuestionsViewModel();
+            this.BindingContext = new QuestionsViewModel(); 
             this.Title = "Trivia Questions";
             InitializeComponent();
         }
+
+        
     }
 }

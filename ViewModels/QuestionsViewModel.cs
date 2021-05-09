@@ -7,10 +7,35 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using TriviaXamarinApp.Services;
 using TriviaXamarinApp.Models;
+using TriviaXamarinApp.Views;
 
 
 namespace TriviaXamarinApp.ViewModels
 {
+    public class AnswerViewModel : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public string Answer { get; set; }
+        public Color color;
+        public Color Color
+        {
+            get { return this.color; }
+
+            set
+            {
+                if (this.color != value)
+                {
+                    this.color = value;
+                    OnPropertyChanged(nameof(Color));
+                }
+            }
+        }
+    }
     class QuestionsViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
@@ -35,14 +60,13 @@ namespace TriviaXamarinApp.ViewModels
         }
         public AmericanQuestion AQ { get; set; }
 
-        public ObservableCollection<string> AnswersList { get; set; }
+        public ObservableCollection<AnswerViewModel> AnswersList { get; set; }
 
         public QuestionsViewModel()
         {
-            AnswersList = new ObservableCollection<string>();
+            AnswersList = new ObservableCollection<AnswerViewModel>();
             AQ = new AmericanQuestion();
             CreateQuestion();
-            
         }
 
         private async void CreateQuestion()
@@ -52,7 +76,7 @@ namespace TriviaXamarinApp.ViewModels
             Random r = new Random();
             string[] arr = new string[4];
 
-           arr[r.Next(0, 4)] = AQ.CorrectAnswer;
+            arr[r.Next(0, 4)] = AQ.CorrectAnswer;
             int counter = 0;
             for (int i = 0; i < 4; i++)
             {
@@ -62,11 +86,41 @@ namespace TriviaXamarinApp.ViewModels
                     counter++;
                 }
             }
-            foreach(string s in arr)
+            foreach (string s in arr)
             {
-                this.AnswersList.Add(s);
+                this.AnswersList.Add(new AnswerViewModel
+                {
+                    Answer = s,
+                    Color = Color.Black
+                });
             }
             AText = AQ.QText;
+
+        }
+
+        public ICommand CheckCommand => new Command<AnswerViewModel>(Answer);
+
+        public void Answer(AnswerViewModel s)
+        {
+            if (s.Answer == AQ.CorrectAnswer)
+            {
+                s.Color = Color.Green;
+            }
+
+            else
+            {
+                s.Color = Color.Red;
+            }
+
+            
+        }
+
+        public ICommand NextCommand => new Command(Next);
+        public async void Next()
+        {
+            Page p = new QuestionsView();
+            await App.Current.MainPage.Navigation.PushAsync(p);
+
         }
 
     }
