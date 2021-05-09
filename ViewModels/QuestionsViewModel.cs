@@ -35,6 +35,8 @@ namespace TriviaXamarinApp.ViewModels
                 }
             }
         }
+
+
     }
     class QuestionsViewModel : INotifyPropertyChanged
     {
@@ -43,6 +45,7 @@ namespace TriviaXamarinApp.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
 
         private string aText;
         public string AText
@@ -59,16 +62,33 @@ namespace TriviaXamarinApp.ViewModels
             }
         }
         public AmericanQuestion AQ { get; set; }
-
+        private bool pressed = false;
         public ObservableCollection<AnswerViewModel> AnswersList { get; set; }
 
+        public bool click;
+        public bool Click
+        {
+            get { return this.click; }
+
+            set
+            {
+                if (this.click != value)
+                {
+                    this.click = value;
+                    OnPropertyChanged(nameof(Click));
+                }
+            }
+        }
+        public static int counter=0;
         public QuestionsViewModel()
         {
             AnswersList = new ObservableCollection<AnswerViewModel>();
             AQ = new AmericanQuestion();
             CreateQuestion();
+            click = false;
         }
 
+       
         private async void CreateQuestion()
         {
             TriviaWebAPIProxy proxy = TriviaWebAPIProxy.CreateProxy();
@@ -102,25 +122,34 @@ namespace TriviaXamarinApp.ViewModels
 
         public void Answer(AnswerViewModel s)
         {
-            if (s.Answer == AQ.CorrectAnswer)
+            if (!pressed)
             {
-                s.Color = Color.Green;
+                if (s.Answer == AQ.CorrectAnswer)
+                {
+                    s.Color = Color.Green;
+                    counter++;
+                }
+
+                else
+                {
+                    s.Color = Color.Red;
+                }
+                pressed = true;
+                
+                if(counter%3==0)
+                {
+                    click = true;
+                }
+
             }
 
-            else
-            {
-                s.Color = Color.Red;
-            }
-
-            
         }
 
         public ICommand NextCommand => new Command(Next);
-        public async void Next()
+        public void Next()
         {
             Page p = new QuestionsView();
-            await App.Current.MainPage.Navigation.PushAsync(p);
-
+            App.Current.MainPage = p;
         }
 
     }

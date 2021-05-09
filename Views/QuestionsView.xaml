@@ -8,7 +8,7 @@
              x:Name="ThePage">
     <ContentPage.Content>
         <StackLayout BackgroundColor="LightBlue" >
-
+            
             <Label x:Name="qtext" Text="{Binding AText}" TextColor="Black" FontSize="Large"/>
 
             <CollectionView ItemsSource="{Binding AnswersList}" x:Name="collec">
@@ -17,19 +17,20 @@
 
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="2*"></RowDefinition>
+                                <RowDefinition Height="3*"></RowDefinition>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"></ColumnDefinition>
-                                <ColumnDefinition Width="5*"></ColumnDefinition>
+                                <ColumnDefinition Width="6*"></ColumnDefinition>
                                 <ColumnDefinition Width="*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
 
-                            <Button x:Name="Answer" Grid.Column="1" Grid.Row="0"  Text="{Binding Answer}" FontSize="20" Padding="0" TextColor="{Binding Color}" Command="{Binding Source={x:Reference ThePage}, Path=BindingContext.CheckCommand}" CommandParameter="{Binding}"/>
+                            <Button x:Name="Answer" Grid.Column="1" Grid.Row="0" Text="{Binding Answer}" FontSize="20" Padding="0" TextColor="{Binding Color}" Command="{Binding Source={x:Reference ThePage}, Path=BindingContext.CheckCommand}" CommandParameter="{Binding}"/>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+            <Button x:Name="AddQ" Text="Add a question" IsEnabled="{Binding Click}" BackgroundColor="Lavender" FontSize="20" FontAttributes="Bold"/> 
             <Button x:Name="Next" Text="Next"  Command="{Binding NextCommand}" FontSize="20" FontAttributes="Bold" BackgroundColor="MediumSeaGreen"/>
         </StackLayout>
     </ContentPage.Content>
