@@ -138,7 +138,7 @@ namespace TriviaXamarinApp.ViewModels
                 
                 if(counter%3==0)
                 {
-                    click = true;
+                    Click = true;
                 }
 
             }
