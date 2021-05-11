@@ -2,6 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TriviaXamarinApp.Views.UsersPageView">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Play" Order="Primary" Priority="0" IconImageSource="playbutton.png" Clicked="ToolbarItem_Clicked"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+  
     <ContentPage.Content>
 
 

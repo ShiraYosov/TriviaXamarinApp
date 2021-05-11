@@ -61,6 +61,21 @@ namespace TriviaXamarinApp.ViewModels
                 }
             }
         }
+
+        private string message;
+        public string Message
+        {
+            get { return this.message; }
+
+            set
+            {
+                if (this.message != value)
+                {
+                    this.message = value;
+                    OnPropertyChanged(nameof(Message));
+                }
+            }
+        }
         public AmericanQuestion AQ { get; set; }
         private bool pressed = false;
         public ObservableCollection<AnswerViewModel> AnswersList { get; set; }
@@ -84,6 +99,7 @@ namespace TriviaXamarinApp.ViewModels
         public QuestionsViewModel()
         {
             Click = false;
+            Message = "";
             AnswersList = new ObservableCollection<AnswerViewModel>();
             AQ = new AmericanQuestion();
             CreateQuestion();
@@ -151,14 +167,20 @@ namespace TriviaXamarinApp.ViewModels
         public void Next()
         {
             Page p = new QuestionsView();
-            App.Current.MainPage = p;
+            App.Current.MainPage.Navigation.PushAsync(p);
         }
 
         public ICommand AddQues => new Command(Add);
         public void Add()
         {
-            Page p = new AddQuestionView();
-            App.Current.MainPage = p;
+            App a = (App)App.Current;
+            if (a.User != null)
+            {
+                Page p = new AddQuestionView();
+                App.Current.MainPage.Navigation.PushAsync(p);
+            }
+            else
+                Message = "Sorry... Login is required to enter this field";
         }
 
     }

@@ -47,6 +47,21 @@ namespace TriviaXamarinApp.ViewModels
                 }
             }
         }
+
+        private string message;
+        public string Message
+        {
+            get { return this.message; }
+
+            set
+            {
+                if (this.message != value)
+                {
+                    this.message = value;
+                    OnPropertyChanged(nameof(Message));
+                }
+            }
+        }
         public ObservableCollection<string> AnswersList { get; set; }
 
         public AddQuestionViewModel()
@@ -54,23 +69,35 @@ namespace TriviaXamarinApp.ViewModels
             this.CorrectAnswer = "";
             this.AnswersList = new ObservableCollection<string>();
             this.QText = "";
+            this.Message = "";
         }
 
         public ICommand AddCommand => new Command(Add);
         public async void Add()
         {
+            int x = 0;
             string[] arr = new string[3];
             foreach(string s in AnswersList)
             {
-                
+                arr[x] = s;
+                x++;
             }
-            AmericanQuestion a = new AmericanQuestion
+            TriviaWebAPIProxy proxy = TriviaWebAPIProxy.CreateProxy();
+            App a = (App)App.Current;
+            AmericanQuestion aq = new AmericanQuestion
             {
                 CorrectAnswer = correctAnswer,
                 QText = qText,
-                OtherAnswers= AnswersList
+                OtherAnswers = arr,
+                CreatorNickName = a.User.NickName
             };
-            TriviaWebAPIProxy proxy = TriviaWebAPIProxy.CreateProxy();
+            bool ok = await proxy.PostNewQuestion(aq);
+
+            if(ok)
+            {
+                Message = "Question was added successfully";
+            }
+            else { Message = "Couls not add your question"; }
             
         }
     }

@@ -87,7 +87,13 @@ namespace TriviaXamarinApp.ViewModels
             if (u != null)
             {
                 App a = (App)App.Current;
-                a.User = u;
+                a.User = new User
+                {
+                    NickName = u.NickName,
+                    Password = u.Password,
+                    Email = u.Email,
+                    Questions = u.Questions
+                };
                 Page p = new UsersPageView();
                 
                 await a.MainPage.Navigation.PushAsync(p);

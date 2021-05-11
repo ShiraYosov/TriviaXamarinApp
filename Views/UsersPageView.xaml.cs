@@ -42,5 +42,10 @@ namespace TriviaXamarinApp.Views
             }
         }
 
+        private void ToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            Page p = new QuestionsView();
+            App.Current.MainPage.Navigation.PushAsync(p);
+        }
     }
 }

@@ -4,27 +4,32 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="TriviaXamarinApp.Views.HomePageView">
-    <ContentPage.Content>
-        <StackLayout BackgroundColor="LightBlue">
+             x:Class="TriviaXamarinApp.Views.HomePageView"
+             BackgroundImageSource="Background.jfif">
 
-            <Label Text="Home Page" TextColor="SeaShell" FontSize="50" HorizontalTextAlignment="Center" FontAttributes="Bold" FontFamily="Calibri"></Label>
-            <Grid >
+
+
+    <ContentPage.Content>
+        <StackLayout >
+
+
+            <Grid RowSpacing="30">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="2*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"></ColumnDefinition>
-                   
                 </Grid.ColumnDefinitions>
 
-                <Button x:Name="Login" Text="Login" BackgroundColor="WhiteSmoke" Clicked="Login_Clicked" Grid.Column="0" Grid.Row="1"/>
-                <Button x:Name="Register" Text="Register" BackgroundColor="WhiteSmoke" Clicked="Register_Clicked" Grid.Column="0" Grid.Row="2"/>
-                <Button x:Name="ViewQuestions" Text="Play" BackgroundColor="WhiteSmoke" Clicked="ViewQuestions_Clicked" Grid.Column="0" Grid.Row="3"/>
+                <Label Text="Welcome!!"  TextColor="Black" FontSize="50" HorizontalTextAlignment="Center" FontAttributes="Bold"  Grid.Column="0" Grid.Row="1"></Label>
+                <Button x:Name="Login" CornerRadius="32" Text="Login" FontSize="20" BackgroundColor="#f2f2f2" Clicked="Login_Clicked" Grid.Column="0" Grid.Row="2"/>
+                <Button x:Name="Register" CornerRadius="32" Text="Register" FontSize="20" BackgroundColor="#f2f2f2" Clicked="Register_Clicked" Grid.Column="0" Grid.Row="3"/>
+                <Button x:Name="ViewQuestions" CornerRadius="32" Text="Play" FontSize="20" BackgroundColor="#f2f2f2" Clicked="ViewQuestions_Clicked" Grid.Column="0" Grid.Row="4"/>
 
 
             </Grid>

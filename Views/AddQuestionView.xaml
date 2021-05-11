@@ -37,6 +37,7 @@
                 <Entry x:Name="ans3" Text="{Binding AnswersList[2]}" Grid.Row="4" Grid.Column="1"/>
             </Grid>
             <Button x:Name="submit" Text="Submit"  Command="{Binding AddCommand}" HorizontalOptions="Center" FontSize="20" FontAttributes="Bold" BackgroundColor="MediumSeaGreen"/>
+            <Label x:Name="msg" Text="{Binding Message}" HorizontalOptions="Center" TextColor="Red" FontSize="30"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -6,10 +6,12 @@
              mc:Ignorable="d"
              x:Class="TriviaXamarinApp.Views.QuestionsView"
              x:Name="ThePage">
-    <ContentPage.Content>
-        <StackLayout BackgroundColor="LightBlue" >
-            
+    <ContentPage.Content >
+        <StackLayout BackgroundColor="LightBlue" HorizontalOptions="Center" VerticalOptions="Center" >
+
+
             <Label x:Name="qtext" Text="{Binding AText}" TextColor="Black" FontSize="Large"/>
+
 
             <CollectionView ItemsSource="{Binding AnswersList}" x:Name="collec">
                 <CollectionView.ItemTemplate>
@@ -30,7 +32,10 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            <Button x:Name="AddQ" Text="Add a question"  Command="{Binding AddQues}" IsEnabled="{Binding Click}" BackgroundColor="Lavender" FontSize="20" FontAttributes="Bold"/> 
+
+
+            <Label x:Name="msg" Text="{Binding Message}" HorizontalOptions="Center" TextColor="Red" FontSize="20"/>
+            <Button x:Name="AddQ" Text="Add a question"  Command="{Binding AddQues}" IsEnabled="{Binding Click}" BackgroundColor="Lavender" FontSize="20" FontAttributes="Bold"/>
             <Button x:Name="Next" Text="Next"  Command="{Binding NextCommand}" FontSize="20" FontAttributes="Bold" BackgroundColor="MediumSeaGreen"/>
         </StackLayout>
     </ContentPage.Content>
