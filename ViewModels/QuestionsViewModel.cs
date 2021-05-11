@@ -79,16 +79,17 @@ namespace TriviaXamarinApp.ViewModels
                 }
             }
         }
-        public static int counter=0;
+        public static int count = 0;
+
         public QuestionsViewModel()
         {
+            Click = false;
             AnswersList = new ObservableCollection<AnswerViewModel>();
             AQ = new AmericanQuestion();
             CreateQuestion();
-            click = false;
         }
 
-       
+
         private async void CreateQuestion()
         {
             TriviaWebAPIProxy proxy = TriviaWebAPIProxy.CreateProxy();
@@ -98,6 +99,7 @@ namespace TriviaXamarinApp.ViewModels
 
             arr[r.Next(0, 4)] = AQ.CorrectAnswer;
             int counter = 0;
+
             for (int i = 0; i < 4; i++)
             {
                 if (arr[i] == null)
@@ -115,7 +117,7 @@ namespace TriviaXamarinApp.ViewModels
                 });
             }
             AText = AQ.QText;
-
+            
         }
 
         public ICommand CheckCommand => new Command<AnswerViewModel>(Answer);
@@ -127,7 +129,7 @@ namespace TriviaXamarinApp.ViewModels
                 if (s.Answer == AQ.CorrectAnswer)
                 {
                     s.Color = Color.Green;
-                    counter++;
+                    count++;
                 }
 
                 else
@@ -135,8 +137,8 @@ namespace TriviaXamarinApp.ViewModels
                     s.Color = Color.Red;
                 }
                 pressed = true;
-                
-                if(counter%3==0)
+
+                if ( count !=0 && count % 3 == 0)
                 {
                     Click = true;
                 }
@@ -149,6 +151,13 @@ namespace TriviaXamarinApp.ViewModels
         public void Next()
         {
             Page p = new QuestionsView();
+            App.Current.MainPage = p;
+        }
+
+        public ICommand AddQues => new Command(Add);
+        public void Add()
+        {
+            Page p = new AddQuestionView();
             App.Current.MainPage = p;
         }
 

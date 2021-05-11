@@ -6,10 +6,37 @@
              mc:Ignorable="d"
              x:Class="TriviaXamarinApp.Views.AddQuestionView">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout BackgroundColor="LightBlue">
+            <Label Text="Add Question" TextColor="SeaShell" FontSize="40" HorizontalTextAlignment="Center" FontAttributes="Bold" FontFamily="Calibri"></Label>
+
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Question text:" TextColor="Black" FontSize="Medium" HorizontalOptions="Start" Grid.Row="0" Grid.Column="0"/>
+                <Label Text="Correct Answer:" TextColor="Black" FontSize="Medium" HorizontalOptions="Start" Grid.Row="1" Grid.Column="0"/>
+                <Label Text="Answer1" TextColor="Black" FontSize="Medium" HorizontalOptions="Start" Grid.Row="2" Grid.Column="0"/>
+                <Label Text="Answer2" TextColor="Black" FontSize="Medium" HorizontalOptions="Start" Grid.Row="3" Grid.Column="0"/>
+                <Label Text="Answer3" TextColor="Black" FontSize="Medium" HorizontalOptions="Start" Grid.Row="4" Grid.Column="0"/>
+
+
+                <Entry x:Name="qtext" Text="{Binding QText}" Grid.Row="0" Grid.Column="1"/>
+                <Entry x:Name="pass" Text="{Binding CorrectAnswer}" Grid.Row="1" Grid.Column="1"/>
+                <Entry x:Name="ans1" Text="{Binding AnswersList[0]}" Grid.Row="2" Grid.Column="1"/>
+                <Entry x:Name="ans2" Text="{Binding AnswersList[1]}" Grid.Row="3" Grid.Column="1"/>
+                <Entry x:Name="ans3" Text="{Binding AnswersList[2]}" Grid.Row="4" Grid.Column="1"/>
+            </Grid>
+            <Button x:Name="submit" Text="Submit"  Command="{Binding AddCommand}" HorizontalOptions="Center" FontSize="20" FontAttributes="Bold" BackgroundColor="MediumSeaGreen"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

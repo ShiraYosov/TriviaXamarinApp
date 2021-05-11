@@ -30,7 +30,7 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            <Button x:Name="AddQ" Text="Add a question" IsEnabled="{Binding Click}" BackgroundColor="Lavender" FontSize="20" FontAttributes="Bold"/> 
+            <Button x:Name="AddQ" Text="Add a question"  Command="{Binding AddQues}" IsEnabled="{Binding Click}" BackgroundColor="Lavender" FontSize="20" FontAttributes="Bold"/> 
             <Button x:Name="Next" Text="Next"  Command="{Binding NextCommand}" FontSize="20" FontAttributes="Bold" BackgroundColor="MediumSeaGreen"/>
         </StackLayout>
     </ContentPage.Content>
