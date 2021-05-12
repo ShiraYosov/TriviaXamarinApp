@@ -45,6 +45,13 @@ namespace TriviaXamarinApp.ViewModels
             await proxy.DeleteQuestion(aq);
         }
 
+        public ICommand EditCommand => new Command<AmericanQuestion>(EditQuestion);
+        public async void EditQuestion(AmericanQuestion aq)
+        {
+            //TriviaWebAPIProxy proxy = TriviaWebAPIProxy.CreateProxy();
+            //await proxy.DeleteQuestion(aq);
+        }
+
 
     }
 }

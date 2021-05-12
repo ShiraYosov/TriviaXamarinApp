@@ -6,33 +6,42 @@
              mc:Ignorable="d"
              x:Class="TriviaXamarinApp.Views.QuestionsView"
              x:Name="ThePage">
-    <ContentPage.Content >
-        <StackLayout BackgroundColor="LightBlue" HorizontalOptions="Center" VerticalOptions="Center" >
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Login" Order="Secondary" Priority="0" Clicked="Login_Clicked"></ToolbarItem>
+        <ToolbarItem Text="Register" Order="Secondary" Priority="0" Clicked="Register_Clicked"></ToolbarItem>
+        <ToolbarItem Text="User's page" Order="Secondary" Priority="1" Command="{Binding UsersCommand}"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content >
+        
+        <StackLayout BackgroundColor="LightBlue" HorizontalOptions="Center" VerticalOptions="Center" >
 
             <Label x:Name="qtext" Text="{Binding AText}" TextColor="Black" FontSize="Large"/>
 
+                <CollectionView ItemsSource="{Binding AnswersList}" x:Name="collec">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
 
-            <CollectionView ItemsSource="{Binding AnswersList}" x:Name="collec">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="3*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="6*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
 
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="3*"></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"></ColumnDefinition>
-                                <ColumnDefinition Width="6*"></ColumnDefinition>
-                                <ColumnDefinition Width="*"></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
+                                <Button x:Name="Answer" Grid.Column="1" Grid.Row="0" Text="{Binding Answer}" FontSize="20" Padding="0" TextColor="{Binding Color}" Command="{Binding Source={x:Reference ThePage}, Path=BindingContext.CheckCommand}" CommandParameter="{Binding}"/>
+                                
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
 
-                            <Button x:Name="Answer" Grid.Column="1" Grid.Row="0" Text="{Binding Answer}" FontSize="20" Padding="0" TextColor="{Binding Color}" Command="{Binding Source={x:Reference ThePage}, Path=BindingContext.CheckCommand}" CommandParameter="{Binding}"/>
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                </CollectionView>
 
+            
 
             <Label x:Name="msg" Text="{Binding Message}" HorizontalOptions="Center" TextColor="Red" FontSize="20"/>
             <Button x:Name="AddQ" Text="Add a question"  Command="{Binding AddQues}" IsEnabled="{Binding Click}" BackgroundColor="Lavender" FontSize="20" FontAttributes="Bold"/>

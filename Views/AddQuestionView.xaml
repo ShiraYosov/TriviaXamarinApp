@@ -32,9 +32,9 @@
 
                 <Entry x:Name="qtext" Text="{Binding QText}" Grid.Row="0" Grid.Column="1"/>
                 <Entry x:Name="pass" Text="{Binding CorrectAnswer}" Grid.Row="1" Grid.Column="1"/>
-                <Entry x:Name="ans1" Text="{Binding AnswersList[0]}" Grid.Row="2" Grid.Column="1"/>
-                <Entry x:Name="ans2" Text="{Binding AnswersList[1]}" Grid.Row="3" Grid.Column="1"/>
-                <Entry x:Name="ans3" Text="{Binding AnswersList[2]}" Grid.Row="4" Grid.Column="1"/>
+                <Entry x:Name="ans1" Text="{Binding Ans1}" Grid.Row="2" Grid.Column="1"/>
+                <Entry x:Name="ans2" Text="{Binding Ans2}" Grid.Row="3" Grid.Column="1"/>
+                <Entry x:Name="ans3" Text="{Binding Ans3}" Grid.Row="4" Grid.Column="1"/>
             </Grid>
             <Button x:Name="submit" Text="Submit"  Command="{Binding AddCommand}" HorizontalOptions="Center" FontSize="20" FontAttributes="Bold" BackgroundColor="MediumSeaGreen"/>
             <Label x:Name="msg" Text="{Binding Message}" HorizontalOptions="Center" TextColor="Red" FontSize="30"/>

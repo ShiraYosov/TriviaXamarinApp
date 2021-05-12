@@ -133,7 +133,7 @@ namespace TriviaXamarinApp.ViewModels
                 });
             }
             AText = AQ.QText;
-            
+
         }
 
         public ICommand CheckCommand => new Command<AnswerViewModel>(Answer);
@@ -154,7 +154,7 @@ namespace TriviaXamarinApp.ViewModels
                 }
                 pressed = true;
 
-                if ( count !=0 && count % 3 == 0)
+                if (count != 0 && count % 3 == 0)
                 {
                     Click = true;
                 }
@@ -177,6 +177,19 @@ namespace TriviaXamarinApp.ViewModels
             if (a.User != null)
             {
                 Page p = new AddQuestionView();
+                App.Current.MainPage.Navigation.PushAsync(p);
+            }
+            else
+                Message = "Sorry... Login is required to enter this field";
+        }
+
+        public ICommand UsersCommand => new Command(Users);
+        public void Users()
+        {
+            App a = (App)App.Current;
+            if (a.User != null)
+            {
+                Page p = new UsersPageView();
                 App.Current.MainPage.Navigation.PushAsync(p);
             }
             else
