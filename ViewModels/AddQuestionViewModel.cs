@@ -141,7 +141,7 @@ namespace TriviaXamarinApp.ViewModels
             {
                 Message = "Question was added successfully";
             }
-            else { Message = "Couls not add your question"; }
+            else { Message = "Could not add your question"; }
 
         }
     }

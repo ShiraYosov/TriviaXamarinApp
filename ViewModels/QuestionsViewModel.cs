@@ -109,31 +109,34 @@ namespace TriviaXamarinApp.ViewModels
         private async void CreateQuestion()
         {
             TriviaWebAPIProxy proxy = TriviaWebAPIProxy.CreateProxy();
+
             this.AQ = await proxy.GetRandomQuestion();
+
             Random r = new Random();
             string[] arr = new string[4];
-
-            arr[r.Next(0, 4)] = AQ.CorrectAnswer;
-            int counter = 0;
-
-            for (int i = 0; i < 4; i++)
+            if (AQ != null)
             {
-                if (arr[i] == null)
+                arr[r.Next(0, 4)] = AQ.CorrectAnswer;
+                int counter = 0;
+
+                for (int i = 0; i < 4; i++)
                 {
-                    arr[i] = AQ.OtherAnswers[counter];
-                    counter++;
+                    if (arr[i] == null)
+                    {
+                        arr[i] = AQ.OtherAnswers[counter];
+                        counter++;
+                    }
+                }
+                foreach (string s in arr)
+                {
+                    this.AnswersList.Add(new AnswerViewModel
+                    {
+                        Answer = s,
+                        Color = Color.Black
+                    });
                 }
             }
-            foreach (string s in arr)
-            {
-                this.AnswersList.Add(new AnswerViewModel
-                {
-                    Answer = s,
-                    Color = Color.Black
-                });
-            }
             AText = AQ.QText;
-
         }
 
         public ICommand CheckCommand => new Command<AnswerViewModel>(Answer);

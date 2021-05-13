@@ -46,10 +46,19 @@ namespace TriviaXamarinApp.ViewModels
         }
 
         public ICommand EditCommand => new Command<AmericanQuestion>(EditQuestion);
-        public async void EditQuestion(AmericanQuestion aq)
+        public void EditQuestion(AmericanQuestion aq)
         {
-            //TriviaWebAPIProxy proxy = TriviaWebAPIProxy.CreateProxy();
-            //await proxy.DeleteQuestion(aq);
+            
+            Page EditPage = new EditQuestionView();
+            TheQuestionViewModel QuestionContext = new TheQuestionViewModel
+            {
+                QuestionText = aq.QText,
+                CorrectAnswer = aq.CorrectAnswer,
+                OtherAnswers = aq.OtherAnswers
+            };
+            EditPage.BindingContext = QuestionContext;
+
+            App.Current.MainPage.Navigation.PushAsync(EditPage);
         }
 
 

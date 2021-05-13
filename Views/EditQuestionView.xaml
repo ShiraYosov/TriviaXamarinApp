@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TriviaXamarinApp.Views.EditQuestionView">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="LightBlue">
+            <Entry Placeholder="{Binding QuestionText}" FontSize="Large" PlaceholderColor="Black" FontAttributes="Bold" FontFamily="Calibri"/>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Entry Placeholder="{Binding CorrectAnswer}" PlaceholderColor="Black" BackgroundColor="Green" HorizontalTextAlignment="Center" FontSize="Medium" FontAttributes="Italic" Grid.Column="0" Grid.Row="1"/>
+                <Entry Placeholder="{Binding OtherAnswers[0]}" PlaceholderColor="Black" FontSize="Medium" HorizontalTextAlignment="Center"  Grid.Column="0" Grid.Row="2"/>
+                <Entry Placeholder="{Binding OtherAnswers[1]}" PlaceholderColor="Black" FontSize="Medium" HorizontalTextAlignment="Center" Grid.Column="0" Grid.Row="3"/>
+                <Entry Placeholder="{Binding OtherAnswers[2]}" PlaceholderColor="Black" FontSize="Medium" HorizontalTextAlignment="Center" Grid.Column="0" Grid.Row="4"/>
+            </Grid>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

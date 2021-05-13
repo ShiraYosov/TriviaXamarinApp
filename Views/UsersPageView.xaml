@@ -24,7 +24,7 @@
                                                Command="{Binding Source={x:Reference collec}, Path= BindingContext.DeleteCommand}"
                                                CommandParameter="{Binding}"/>
                                     <SwipeItem Text="Edit"
-                                               IconImageSource="bin.png"
+                                               IconImageSource="edit.png"
                                                BackgroundColor="LightGreen"
                                                 Command="{Binding Source={x:Reference collec}, Path= BindingContext.EditCommand}"
                                                CommandParameter="{Binding}"/>
