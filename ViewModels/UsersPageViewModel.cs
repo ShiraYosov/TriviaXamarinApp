@@ -48,15 +48,16 @@ namespace TriviaXamarinApp.ViewModels
         public ICommand EditCommand => new Command<AmericanQuestion>(EditQuestion);
         public void EditQuestion(AmericanQuestion aq)
         {
-            
+
             Page EditPage = new EditQuestionView();
-            TheQuestionViewModel QuestionContext = new TheQuestionViewModel
+            EditQuestionViewModel EditContext = new EditQuestionViewModel
             {
-                QuestionText = aq.QText,
-                CorrectAnswer = aq.CorrectAnswer,
-                OtherAnswers = aq.OtherAnswers
+                AQ = aq,
+                QText = aq.QText,
+                CorrectAns = aq.CorrectAnswer,
+                AnswersList = aq.OtherAnswers
             };
-            EditPage.BindingContext = QuestionContext;
+            EditPage.BindingContext = EditContext;
 
             App.Current.MainPage.Navigation.PushAsync(EditPage);
         }

@@ -93,26 +93,32 @@ namespace TriviaXamarinApp.ViewModels
         public async void Register()
         {
             TriviaWebAPIProxy proxy = TriviaWebAPIProxy.CreateProxy();
-            User u = new User
+            if (NickName != "" || Password!= "" || Email!="" )
             {
-                NickName = nickName,
-                Password = password,
-                Email = email,
-                Questions = null
-            };
+                User u = new User
+                {
+                    NickName = nickName,
+                    Password = password,
+                    Email = email,
+                    Questions = null
+                };
 
-            bool ok = await proxy.RegisterUser(u);
-            if (ok)
-            {
-                Page p = new UsersPageView();
-                App a = (App)App.Current;
-                a.User.Email = this.email;
-                a.User.Password = this.password;
-                a.User.NickName = this.nickName;
+                bool ok = await proxy.RegisterUser(u);
+                if (ok)
+                {
+                    Page p = new UsersPageView();
+                    App a = (App)App.Current;
+                    a.User.Email = this.email;
+                    a.User.Password = this.password;
+                    a.User.NickName = this.nickName;
 
-                await a.MainPage.Navigation.PushAsync(p);
+                    await a.MainPage.Navigation.PushAsync(p);
+                }
+
+                else { this.Message = "Failed to register"; }
             }
-            else { this.Message = "Failed to register"; }
+            else
+            { this.Message = "Failed to register! One field or more is missing"; }
         }
     }
 }

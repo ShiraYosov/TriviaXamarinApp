@@ -19,8 +19,12 @@ namespace TriviaXamarinApp.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public string QuestionText {get;set;}
+        public string QuestionText { get; set; }
         public string CorrectAnswer { get; set; }
         public string[] OtherAnswers { get; set; }
+
+        
+        
+
     }
 }

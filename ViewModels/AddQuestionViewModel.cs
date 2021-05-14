@@ -120,29 +120,32 @@ namespace TriviaXamarinApp.ViewModels
         public ICommand AddCommand => new Command(Add);
         public async void Add()
         {
-
-            string[] arr = new string[3];
-            arr[0] = Ans1;
-            arr[1] = Ans2;
-            arr[2] = Ans3;
-
-            TriviaWebAPIProxy proxy = TriviaWebAPIProxy.CreateProxy();
-            App a = (App)App.Current;
-            AmericanQuestion aq = new AmericanQuestion
+            if (QText != "" && Ans1 != "" && Ans2 != "" && Ans3 != "" && CorrectAnswer != "")
             {
-                CorrectAnswer = correctAnswer,
-                QText = qText,
-                OtherAnswers = arr,
-                CreatorNickName = a.User.NickName
-            };
-            bool ok = await proxy.PostNewQuestion(aq);
+                string[] arr = new string[3];
+                arr[0] = Ans1;
+                arr[1] = Ans2;
+                arr[2] = Ans3;
 
-            if (ok)
-            {
-                Message = "Question was added successfully";
+                TriviaWebAPIProxy proxy = TriviaWebAPIProxy.CreateProxy();
+                App a = (App)App.Current;
+                AmericanQuestion aq = new AmericanQuestion
+                {
+                    CorrectAnswer = correctAnswer,
+                    QText = qText,
+                    OtherAnswers = arr,
+                    CreatorNickName = a.User.NickName
+                };
+                bool ok = await proxy.PostNewQuestion(aq);
+
+                if (ok)
+                {
+                    Message = "Question was added successfully";
+                }
+                else { Message = "Could not add your question"; }
             }
-            else { Message = "Could not add your question"; }
-
+            else
+            { this.Message = "Could not add your question! One field or more is missing"; }
         }
     }
 }

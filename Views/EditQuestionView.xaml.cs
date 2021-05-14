@@ -14,7 +14,7 @@ namespace TriviaXamarinApp.Views
     {
         public EditQuestionView()
         {
-            this.BindingContext = new TheQuestionViewModel();
+            this.BindingContext = new EditQuestionViewModel();
             InitializeComponent();
         }
     }

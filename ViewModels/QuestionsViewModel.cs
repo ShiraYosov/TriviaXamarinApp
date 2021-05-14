@@ -109,19 +109,22 @@ namespace TriviaXamarinApp.ViewModels
         private async void CreateQuestion()
         {
             TriviaWebAPIProxy proxy = TriviaWebAPIProxy.CreateProxy();
-
             this.AQ = await proxy.GetRandomQuestion();
+
+            while(AQ.QText != "" || AQ.CorrectAnswer != "")
+            {
+                this.AQ = await proxy.GetRandomQuestion();
+            }
 
             Random r = new Random();
             string[] arr = new string[4];
-            if (AQ != null)
-            {
+            
                 arr[r.Next(0, 4)] = AQ.CorrectAnswer;
                 int counter = 0;
 
                 for (int i = 0; i < 4; i++)
                 {
-                    if (arr[i] == null)
+                    if (arr[i] == null && count<3)
                     {
                         arr[i] = AQ.OtherAnswers[counter];
                         counter++;
@@ -135,7 +138,7 @@ namespace TriviaXamarinApp.ViewModels
                         Color = Color.Black
                     });
                 }
-            }
+            
             AText = AQ.QText;
         }
 
