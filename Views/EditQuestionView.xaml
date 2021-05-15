@@ -4,7 +4,7 @@
              x:Class="TriviaXamarinApp.Views.EditQuestionView">
     <ContentPage.Content>
         <StackLayout BackgroundColor="LightBlue">
-            <Entry Placeholder="{Binding QText}" FontSize="Medium" PlaceholderColor="DarkGray" FontAttributes="Bold" FontFamily="Calibri"/>
+            <Entry Placeholder="{Binding QText}" FontSize="Medium" PlaceholderColor="Black" FontAttributes="Bold" FontFamily="Calibri"/>
 
             <Grid>
                 <Grid.RowDefinitions>
@@ -19,10 +19,10 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <Entry Placeholder="{Binding CorrectAns}" PlaceholderColor="DarkGray" BackgroundColor="Green" HorizontalTextAlignment="Center" FontSize="Medium" FontAttributes="Italic" Grid.Column="0" Grid.Row="1"/>
-                <Entry Placeholder="{Binding AnswersList[0]}" PlaceholderColor="DarkGray" FontSize="Medium" HorizontalTextAlignment="Center"  Grid.Column="0" Grid.Row="2"/>
-                <Entry Placeholder="{Binding AnswersList[1]}" PlaceholderColor="DarkGray" FontSize="Medium" HorizontalTextAlignment="Center" Grid.Column="0" Grid.Row="3"/>
-                <Entry Placeholder="{Binding AnswersList[2]}" PlaceholderColor="DarkGray" FontSize="Medium" HorizontalTextAlignment="Center" Grid.Column="0" Grid.Row="4"/>
+                <Entry Placeholder="{Binding CorrectAns}" PlaceholderColor="Black" BackgroundColor="Green" HorizontalTextAlignment="Center" FontSize="Medium" FontAttributes="Italic" Grid.Column="0" Grid.Row="1"/>
+                <Entry Placeholder="{Binding AnswersList[0]}" PlaceholderColor="Black" FontSize="Medium" HorizontalTextAlignment="Center"  Grid.Column="0" Grid.Row="2"/>
+                <Entry Placeholder="{Binding AnswersList[1]}" PlaceholderColor="Black" FontSize="Medium" HorizontalTextAlignment="Center" Grid.Column="0" Grid.Row="3"/>
+                <Entry Placeholder="{Binding AnswersList[2]}" PlaceholderColor="Black" FontSize="Medium" HorizontalTextAlignment="Center" Grid.Column="0" Grid.Row="4"/>
             </Grid>
             <Button x:Name="submit" Text="Submit"  Command="{Binding EditQuestionCommand}" HorizontalOptions="Center" FontSize="20" FontAttributes="Bold" BackgroundColor="MediumSeaGreen"/>
         </StackLayout>

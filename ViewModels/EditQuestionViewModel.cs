@@ -63,16 +63,29 @@ namespace TriviaXamarinApp.ViewModels
                 }
             }
         }
-        public AmericanQuestion AQ { get; set; }
+        public AmericanQuestion aq { get; set; }
+        public AmericanQuestion AQ
+        {
+            get { return this.aq; }
 
-        
+            set
+            {
+                if (this.aq != value)
+                {
+                    this.aq = value;
+                    OnPropertyChanged(nameof(AQ));
+                }
+            }
+        }
+
+
 
         public ICommand EditQuestionCommand => new Command(Edit);
         public async void Edit()
         {
             TriviaWebAPIProxy proxy = TriviaWebAPIProxy.CreateProxy();
             App a = (App)App.Current;
-
+            
            await proxy.DeleteQuestion(AQ);
 
             AmericanQuestion newQ = new AmericanQuestion

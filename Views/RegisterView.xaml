@@ -4,17 +4,19 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="TriviaXamarinApp.Views.RegisterView">
+             x:Class="TriviaXamarinApp.Views.RegisterView"
+             BackgroundImageSource="back2.jpg">
     <ContentPage.Content>
-        <StackLayout BackgroundColor="LightBlue">
+        
+        <StackLayout>
 
-            <Label Text="Register" TextColor="SeaShell" FontSize="50" HorizontalTextAlignment="Center" FontAttributes="Bold" FontFamily="Calibri"></Label>
-            <Grid >
+            <Label Text="Register" FontSize="50" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="Black"></Label>
+            <Grid RowSpacing="37" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
@@ -22,18 +24,20 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <Label Text="Please enter NickName:" TextColor="Black" FontSize="Medium" HorizontalOptions="Center" Grid.Row="1" Grid.Column="0"/>
-                <Label Text="Please enter Email:" TextColor="Black" FontSize="Medium" HorizontalOptions="Center" Grid.Row="2" Grid.Column="0"/>
-                <Label Text="Please enter Password:" TextColor="Black" FontSize="Medium" HorizontalOptions="Center" Grid.Row="3" Grid.Column="0"/>
+                <Label Text="Please enter NickName:" TextColor="Black" FontAttributes="Bold" FontSize="17" HorizontalOptions="Center" Grid.Row="1" Grid.Column="0"/>
+                <Label Text="Please enter Email:" TextColor="Black" FontSize="17" FontAttributes="Bold" HorizontalOptions="Center" Grid.Row="2" Grid.Column="0"/>
+                <Label Text="Please enter Password:" TextColor="Black" FontSize="17" FontAttributes="Bold" HorizontalOptions="Center" Grid.Row="3" Grid.Column="0"/>
 
                 <Entry x:Name="nickName" Text="{Binding NickName}" Grid.Row="1" Grid.Column="1"/>
                 <Entry x:Name="email" Text="{Binding Email}" Grid.Row="2" Grid.Column="1"/>
                 <Entry x:Name="pass" Text="{Binding Password}" Grid.Row="3" Grid.Column="1"/>
             </Grid>
 
-
-            <Button x:Name="submit" Text="Submit" HorizontalOptions="Center" FontSize="20" FontAttributes="Bold" BackgroundColor="MediumSeaGreen" Command="{Binding RegisterCommand}"/>
-            <Label x:Name="msg" Text="{Binding Message}" HorizontalOptions="Center" TextColor="Red" FontSize="30"/>
+            <Label HeightRequest="60"/>
+            <Frame HeightRequest = "50" Padding="4" CornerRadius="25" WidthRequest = "100" HorizontalOptions="Center" VerticalOptions="Center">
+                <Button x:Name="submit" Text="Submit" CornerRadius="25" HorizontalOptions="Center" VerticalOptions="Center" FontSize="20" FontAttributes="Bold" TextColor="White" BackgroundColor="Black" Command="{Binding RegisterCommand}"/>
+            </Frame>
+            <Label x:Name="msg" Text="{Binding Message}" HorizontalOptions="Center" TextColor="Red" FontAttributes="Bold" FontSize="25"/>
 
         </StackLayout>
     </ContentPage.Content>

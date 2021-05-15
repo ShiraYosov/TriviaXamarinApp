@@ -111,7 +111,7 @@ namespace TriviaXamarinApp.ViewModels
             TriviaWebAPIProxy proxy = TriviaWebAPIProxy.CreateProxy();
             this.AQ = await proxy.GetRandomQuestion();
 
-            while(AQ.QText != "" || AQ.CorrectAnswer != "")
+            while(AQ.QText == "" || AQ.CorrectAnswer == "")
             {
                 this.AQ = await proxy.GetRandomQuestion();
             }
@@ -124,7 +124,7 @@ namespace TriviaXamarinApp.ViewModels
 
                 for (int i = 0; i < 4; i++)
                 {
-                    if (arr[i] == null && count<3)
+                    if (arr[i] == null && counter<3)
                     {
                         arr[i] = AQ.OtherAnswers[counter];
                         counter++;
