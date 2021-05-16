@@ -12,27 +12,20 @@
             <Label Text="Login" TextColor="Black" FontSize="50" HorizontalTextAlignment="Center" FontAttributes="Bold"></Label>
 
            
-            <Grid >
+            <Grid RowSpacing="40" >
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="2*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="20"></RowDefinition>
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="1"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    
                 </Grid.ColumnDefinitions>
 
-                <Label Text="Please enter Email:" TextColor="Black" FontAttributes="Bold" FontSize="17" HorizontalOptions="Center" Grid.Row="1" Grid.Column="0"/>
-                <Label Text="Please enter Password:" TextColor="Black" FontAttributes="Bold" FontSize="17" HorizontalOptions="Center" Grid.Row="1" Grid.Column="2"/>
-
-
-                <Entry x:Name="email" Text="{Binding Email}" Grid.Row="2" Grid.Column="0"/>
-                <Entry x:Name="pass" IsPassword="True" Text="{Binding Password}" Grid.Row="2" Grid.Column="2"/>
+                <Entry x:Name="email" Placeholder="Please enter Email" Text="{Binding Email}" Grid.Row="1" Grid.Column="0"/>
+                <Entry x:Name="pass" Placeholder="Please enter Password" IsPassword="True" Text="{Binding Password}" Grid.Row="2" Grid.Column="0"/>
             </Grid>
 
             <Frame HeightRequest = "50" Padding="4" CornerRadius="25" WidthRequest = "100" HorizontalOptions="Center" VerticalOptions="Center">
