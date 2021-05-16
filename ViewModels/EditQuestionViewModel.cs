@@ -11,14 +11,14 @@ using TriviaXamarinApp.Views;
 
 namespace TriviaXamarinApp.ViewModels
 {
-    class EditQuestionViewModel: INotifyPropertyChanged
+    class EditQuestionViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        ICommand EditCommand => new Command(Edit);
+        
 
         private string correctAns;
         public string CorrectAns
@@ -49,7 +49,7 @@ namespace TriviaXamarinApp.ViewModels
             }
         }
 
-        private string[] answersList ;
+        private string[] answersList;
         public string[] AnswersList
         {
             get { return this.answersList; }
@@ -63,45 +63,55 @@ namespace TriviaXamarinApp.ViewModels
                 }
             }
         }
-        public AmericanQuestion aq { get; set; }
-        public AmericanQuestion AQ
+
+        private string message;
+        public string Message
         {
-            get { return this.aq; }
+            get { return this.message; }
 
             set
             {
-                if (this.aq != value)
+                if (this.message != value)
                 {
-                    this.aq = value;
-                    OnPropertyChanged(nameof(AQ));
+                    this.message = value;
+                    OnPropertyChanged(nameof(Message));
                 }
             }
         }
+        public AmericanQuestion AQ { get; set; }
 
+        public EditQuestionViewModel()
+        {
+            Message = "";
+        }
 
-
+        
         public ICommand EditQuestionCommand => new Command(Edit);
         public async void Edit()
         {
-            TriviaWebAPIProxy proxy = TriviaWebAPIProxy.CreateProxy();
-            App a = (App)App.Current;
-            
-           await proxy.DeleteQuestion(AQ);
-
-            AmericanQuestion newQ = new AmericanQuestion
+            if (QText != "" && CorrectAns != "" && AnswersList[0] != "" && AnswersList[1] != "" && AnswersList[2] != "")
             {
-                QText=QText,
-                OtherAnswers=AnswersList,
-                CorrectAnswer=CorrectAns,
-                CreatorNickName=a.User.NickName
-            };
+                TriviaWebAPIProxy proxy = TriviaWebAPIProxy.CreateProxy();
+                App a = (App)App.Current;
 
-            await proxy.PostNewQuestion(newQ);
-            await App.Current.MainPage.Navigation.PushAsync(new UsersPageView());
+                await proxy.DeleteQuestion(AQ);
 
+                AmericanQuestion newQ = new AmericanQuestion
+                {
+                    QText = QText,
+                    OtherAnswers = AnswersList,
+                    CorrectAnswer = CorrectAns,
+                    CreatorNickName = a.User.NickName
+                };
 
+                await proxy.PostNewQuestion(newQ);
+                await App.Current.MainPage.Navigation.PushAsync(new UsersPageView());
+            }
+
+            else
+            { this.Message = "Could not edit your question! One field or more is missing"; }
         }
 
-        }
     }
+}
 

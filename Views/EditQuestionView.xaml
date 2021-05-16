@@ -4,7 +4,7 @@
              x:Class="TriviaXamarinApp.Views.EditQuestionView">
     <ContentPage.Content>
         <StackLayout BackgroundColor="LightBlue">
-            <Entry Text="{Binding QText}" FontSize="20" TextColor="Black" FontAttributes="Bold" />
+            <Entry Text="{Binding QText}" FontSize="20" TextColor="Black" />
 
             <Grid>
                 <Grid.RowDefinitions>
@@ -19,12 +19,13 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <Entry Text="{Binding CorrectAns}" TextColor="Black" BackgroundColor="Green" HorizontalTextAlignment="Center" FontSize="Medium" FontAttributes="Italic" Grid.Column="0" Grid.Row="1"/>
+                <Entry Text="{Binding CorrectAns}" TextColor="Black" BackgroundColor="Green" HorizontalTextAlignment="Center" FontSize="20" FontAttributes="Italic" Grid.Column="0" Grid.Row="1"/>
                 <Entry Text="{Binding AnswersList[0]}" TextColor="Black" FontSize="20" HorizontalTextAlignment="Center"  Grid.Column="0" Grid.Row="2"/>
                 <Entry Text="{Binding AnswersList[1]}" TextColor="Black" FontSize="20" HorizontalTextAlignment="Center" Grid.Column="0" Grid.Row="3"/>
                 <Entry Text="{Binding AnswersList[2]}" TextColor="Black" FontSize="20" HorizontalTextAlignment="Center" Grid.Column="0" Grid.Row="4"/>
             </Grid>
             <Button x:Name="submit" Text="Submit"  Command="{Binding EditQuestionCommand}" HorizontalOptions="Center" FontSize="20" FontAttributes="Bold" BackgroundColor="MediumSeaGreen"/>
+            <Label x:Name="msg" Text="{Binding Message}" HorizontalOptions="Center" TextColor="Red" FontSize="20"/>
         </StackLayout>
 
     </ContentPage.Content>
