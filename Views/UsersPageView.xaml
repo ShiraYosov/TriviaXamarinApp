@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TriviaXamarinApp.Views.UsersPageView">
+             x:Class="TriviaXamarinApp.Views.UsersPageView"
+             BackgroundImageSource="back3.jpg">
     
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Play" Order="Primary" Priority="0" IconImageSource="playbutton.png" Clicked="ToolbarItem_Clicked"></ToolbarItem>
@@ -10,45 +11,48 @@
     <ContentPage.Content>
 
 
-        <StackLayout BackgroundColor="LightBlue" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-            <Label Text="My questions:" TextColor="Black" FontSize="Large" FontAttributes="Bold" FontFamily="Calibri" />
-            <CollectionView ItemsSource="{Binding QuestionsList}" x:Name="collec">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <SwipeView>
-                            <SwipeView.LeftItems>
-                                <SwipeItems>
-                                    <SwipeItem Text="Delete"
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+            <Label Text="My questions:" TextColor="Black" FontSize="35" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+            <RefreshView x:Name="refreshView"
+             Command="{Binding Refresh}"
+             IsRefreshing="{Binding IsRefreshing}">
+                <CollectionView ItemsSource="{Binding QuestionsList}" x:Name="collec">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <SwipeView>
+                                <SwipeView.LeftItems>
+                                    <SwipeItems>
+                                        <SwipeItem Text="Delete"
                                                IconImageSource="bin.png"
                                                BackgroundColor="OrangeRed"
                                                Command="{Binding Source={x:Reference collec}, Path= BindingContext.DeleteCommand}"
                                                CommandParameter="{Binding}"/>
-                                    <SwipeItem Text="Edit"
+                                        <SwipeItem Text="Edit"
                                                IconImageSource="edit.png"
                                                BackgroundColor="LightGreen"
                                                 Command="{Binding Source={x:Reference collec}, Path= BindingContext.EditCommand}"
                                                CommandParameter="{Binding}"/>
-                                </SwipeItems>
+                                    </SwipeItems>
 
-                            </SwipeView.LeftItems>
-                           
-                            <Grid Padding="10" HorizontalOptions="FillAndExpand">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*" />
-                               </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    
-                                </Grid.ColumnDefinitions>
-                                <Button x:Name="Question" Text="{Binding QText}" Padding="0" Clicked="Question_Clicked" Grid.Column="0" Grid.Row="0" CommandParameter="{Binding}" />
-                                
-                               </Grid>
-                                
-                        </SwipeView>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                                </SwipeView.LeftItems>
 
+                                <Grid Padding="10" HorizontalOptions="FillAndExpand">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+
+                                    </Grid.ColumnDefinitions>
+                                    <Button x:Name="Question" Text="{Binding QText}" Padding="0" Clicked="Question_Clicked" Grid.Column="0" Grid.Row="0" CommandParameter="{Binding}" />
+
+                                </Grid>
+
+                            </SwipeView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

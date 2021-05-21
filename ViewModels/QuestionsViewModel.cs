@@ -111,34 +111,34 @@ namespace TriviaXamarinApp.ViewModels
             TriviaWebAPIProxy proxy = TriviaWebAPIProxy.CreateProxy();
             this.AQ = await proxy.GetRandomQuestion();
 
-            while(AQ.QText == "" || AQ.CorrectAnswer == "")
+            while (AQ.QText == "" || AQ.CorrectAnswer == "")
             {
                 this.AQ = await proxy.GetRandomQuestion();
             }
 
             Random r = new Random();
             string[] arr = new string[4];
-            
-                arr[r.Next(0, 4)] = AQ.CorrectAnswer;
-                int counter = 0;
 
-                for (int i = 0; i < 4; i++)
+            arr[r.Next(0, 4)] = AQ.CorrectAnswer;
+            int counter = 0;
+
+            for (int i = 0; i < 4; i++)
+            {
+                if (arr[i] == null && counter < 3)
                 {
-                    if (arr[i] == null && counter<3)
-                    {
-                        arr[i] = AQ.OtherAnswers[counter];
-                        counter++;
-                    }
+                    arr[i] = AQ.OtherAnswers[counter];
+                    counter++;
                 }
-                foreach (string s in arr)
+            }
+            foreach (string s in arr)
+            {
+                this.AnswersList.Add(new AnswerViewModel
                 {
-                    this.AnswersList.Add(new AnswerViewModel
-                    {
-                        Answer = s,
-                        Color = Color.Black
-                    });
-                }
-            
+                    Answer = s,
+                    Color = Color.Black
+                });
+            }
+
             AText = AQ.QText;
         }
 
@@ -152,6 +152,11 @@ namespace TriviaXamarinApp.ViewModels
                 {
                     s.Color = Color.Green;
                     count++;
+
+                    if (count != 0 && count % 3 == 0)
+                    {
+                        Click = true;
+                    }
                 }
 
                 else
@@ -159,12 +164,6 @@ namespace TriviaXamarinApp.ViewModels
                     s.Color = Color.Red;
                 }
                 pressed = true;
-
-                if (count != 0 && count % 3 == 0)
-                {
-                    Click = true;
-                }
-
             }
 
         }

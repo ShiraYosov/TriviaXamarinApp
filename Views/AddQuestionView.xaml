@@ -4,12 +4,13 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="TriviaXamarinApp.Views.AddQuestionView">
+             x:Class="TriviaXamarinApp.Views.AddQuestionView"
+             BackgroundImageSource="back4.jpg">
     <ContentPage.Content>
-        <StackLayout BackgroundColor="LightBlue">
-            <Label Text="Add Question" TextColor="SeaShell" FontSize="40" HorizontalTextAlignment="Center" FontAttributes="Bold" FontFamily="Calibri"></Label>
+        <StackLayout>
+            <Label Text="Add Question" TextColor="Black" FontSize="40" HorizontalTextAlignment="Center" FontAttributes="Bold"></Label>
 
-            <Grid >
+            <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
@@ -18,25 +19,20 @@
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
+                <Grid.ColumnDefinitions >
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <Label Text="Question text:" TextColor="Black" FontSize="Medium" HorizontalOptions="Start" Grid.Row="0" Grid.Column="0"/>
-                <Label Text="Correct Answer:" TextColor="Black" FontSize="Medium" HorizontalOptions="Start" Grid.Row="1" Grid.Column="0"/>
-                <Label Text="Answer1" TextColor="Black" FontSize="Medium" HorizontalOptions="Start" Grid.Row="2" Grid.Column="0"/>
-                <Label Text="Answer2" TextColor="Black" FontSize="Medium" HorizontalOptions="Start" Grid.Row="3" Grid.Column="0"/>
-                <Label Text="Answer3" TextColor="Black" FontSize="Medium" HorizontalOptions="Start" Grid.Row="4" Grid.Column="0"/>
-
-
-                <Entry x:Name="qtext" Text="{Binding QText}" Grid.Row="0" Grid.Column="1"/>
-                <Entry x:Name="correctAns" Text="{Binding CorrectAnswer}" Grid.Row="1" Grid.Column="1"/>
-                <Entry x:Name="ans1" Text="{Binding Ans1}" Grid.Row="2" Grid.Column="1"/>
-                <Entry x:Name="ans2" Text="{Binding Ans2}" Grid.Row="3" Grid.Column="1"/>
-                <Entry x:Name="ans3" Text="{Binding Ans3}" Grid.Row="4" Grid.Column="1"/>
+                <Entry x:Name="qtext" Text="{Binding QText}" Placeholder="Question text" Grid.Row="0" Grid.Column="0"/>
+                <Entry x:Name="correctAns" Text="{Binding CorrectAnswer}" Placeholder="Correct answer" Grid.Row="1" Grid.Column="0"/>
+                <Entry x:Name="ans1" Text="{Binding Ans1}" Placeholder="Possible answer 1" Grid.Row="2" Grid.Column="0"/>
+                <Entry x:Name="ans2" Text="{Binding Ans2}" Placeholder="Possible answer 2" Grid.Row="3" Grid.Column="0"/>
+                <Entry x:Name="ans3" Text="{Binding Ans3}" Placeholder="Possible answer 3" Grid.Row="4" Grid.Column="0"/>
             </Grid>
-            <Button x:Name="submit" Text="Submit"  Command="{Binding AddCommand}" HorizontalOptions="Center" FontSize="20" FontAttributes="Bold" BackgroundColor="MediumSeaGreen"/>
+            <Frame HeightRequest = "50" Padding="4" CornerRadius="25" WidthRequest = "100" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Black">
+                <Button x:Name="submit" Text="Submit"  Command="{Binding AddCommand}" 
+                CornerRadius="25" HorizontalOptions="Center" FontSize="20" FontAttributes="Bold" TextColor="Black" BackgroundColor="White"/>
+            </Frame>
             <Label x:Name="msg" Text="{Binding Message}" HorizontalOptions="Center" TextColor="Red" FontSize="20"/>
         </StackLayout>
     </ContentPage.Content>

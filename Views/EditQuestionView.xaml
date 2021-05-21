@@ -1,12 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TriviaXamarinApp.Views.EditQuestionView">
+             x:Class="TriviaXamarinApp.Views.EditQuestionView"
+             BackgroundImageSource="back4.jpg">
+    
     <ContentPage.Content>
-        <StackLayout BackgroundColor="LightBlue">
+        <StackLayout>
             <Entry Text="{Binding QText}" FontSize="20" TextColor="Black" />
 
-            <Grid>
+            <Grid RowSpacing="15">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
@@ -19,12 +21,17 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <Entry Text="{Binding CorrectAns}" TextColor="Black" BackgroundColor="Green" HorizontalTextAlignment="Center" FontSize="20" FontAttributes="Italic" Grid.Column="0" Grid.Row="1"/>
+                <Entry Text="{Binding CorrectAns}"  TextColor="Green" HorizontalTextAlignment="Center" FontSize="20" FontAttributes="Italic" Grid.Column="0" Grid.Row="1"/>
                 <Entry Text="{Binding AnswersList[0]}" TextColor="Black" FontSize="20" HorizontalTextAlignment="Center"  Grid.Column="0" Grid.Row="2"/>
                 <Entry Text="{Binding AnswersList[1]}" TextColor="Black" FontSize="20" HorizontalTextAlignment="Center" Grid.Column="0" Grid.Row="3"/>
                 <Entry Text="{Binding AnswersList[2]}" TextColor="Black" FontSize="20" HorizontalTextAlignment="Center" Grid.Column="0" Grid.Row="4"/>
             </Grid>
-            <Button x:Name="submit" Text="Submit"  Command="{Binding EditQuestionCommand}" HorizontalOptions="Center" FontSize="20" FontAttributes="Bold" BackgroundColor="MediumSeaGreen"/>
+            
+            <Frame HeightRequest = "50" Padding="4" CornerRadius="25" WidthRequest = "100" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Black">
+                <Button x:Name="submit" Text="Submit" Command="{Binding EditQuestionCommand}" 
+                CornerRadius="25" HorizontalOptions="Center" FontSize="20" FontAttributes="Bold" TextColor="Black" BackgroundColor="White"/>
+            </Frame>
+            
             <Label x:Name="msg" Text="{Binding Message}" HorizontalOptions="Center" TextColor="Red" FontSize="20"/>
         </StackLayout>
 
