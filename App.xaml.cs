@@ -14,6 +14,7 @@ namespace TriviaXamarinApp
         public User User { get; set; }
         public App()
         {
+            User = new User();
             User = null;
             InitializeComponent();
             Page p = new HomePageView();

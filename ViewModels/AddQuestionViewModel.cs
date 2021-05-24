@@ -7,6 +7,7 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using TriviaXamarinApp.Services;
 using TriviaXamarinApp.Models;
+using TriviaXamarinApp.Views;
 namespace TriviaXamarinApp.ViewModels
 {
     class AddQuestionViewModel : INotifyPropertyChanged
@@ -140,7 +141,7 @@ namespace TriviaXamarinApp.ViewModels
 
                 if (ok)
                 {
-                    Message = "Question was added successfully";
+                    await App.Current.MainPage.Navigation.PushAsync(new UsersPageView());
                 }
                 else { Message = "Could not add your question"; }
             }

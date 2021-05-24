@@ -13,9 +13,7 @@
 
         <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
             <Label Text="My questions:" TextColor="Black" FontSize="35" FontAttributes="Bold" HorizontalTextAlignment="Center" />
-            <RefreshView x:Name="refreshView"
-             Command="{Binding Refresh}"
-             IsRefreshing="{Binding IsRefreshing}">
+            
                 <CollectionView ItemsSource="{Binding QuestionsList}" x:Name="collec">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
@@ -52,7 +50,7 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-            </RefreshView>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

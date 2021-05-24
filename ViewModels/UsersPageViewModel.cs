@@ -22,26 +22,10 @@ namespace TriviaXamarinApp.ViewModels
 
         public ObservableCollection<AmericanQuestion> QuestionsList { get; set; }
 
-        private bool isRefreshing;
-        public bool IsRefreshing
-        {
-            get
-            {
-                return this.isRefreshing;
-            }
-            set
-            {
-                if (this.isRefreshing != value)
-                {
-                    this.isRefreshing = value;
-                    OnPropertyChanged(nameof(IsRefreshing));
-                }
-            }
-        }
+       
         public UsersPageViewModel()
         {
             QuestionsList = new ObservableCollection<AmericanQuestion>();
-            IsRefreshing = false;
             CreateQuestionCollection();
         }
 
@@ -62,20 +46,8 @@ namespace TriviaXamarinApp.ViewModels
             await proxy.DeleteQuestion(aq);
         }
 
-        public ICommand RefreshCommand => new Command(Refresh);
-
-        public void Refresh()
-        {
-            App a = (App)App.Current;
-            List<AmericanQuestion> theQuestions = a.User.Questions;
-            this.QuestionsList.Clear();
-            foreach (AmericanQuestion m in theQuestions)
-            {
-                this.QuestionsList.Add(m);
-            }
-            this.IsRefreshing = false;
-        }
-
+      
+        
         public ICommand EditCommand => new Command<AmericanQuestion>(EditQuestion);
         public void EditQuestion(AmericanQuestion aq)
         {
