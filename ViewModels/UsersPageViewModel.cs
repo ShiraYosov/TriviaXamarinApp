@@ -44,6 +44,9 @@ namespace TriviaXamarinApp.ViewModels
         {
             TriviaWebAPIProxy proxy = TriviaWebAPIProxy.CreateProxy();
             await proxy.DeleteQuestion(aq);
+            App a = (App)App.Current;
+            a.User.Questions.Remove(aq);
+            App.Current.MainPage = new UsersPageView();
         }
 
       

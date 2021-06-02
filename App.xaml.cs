@@ -6,12 +6,18 @@ using TriviaXamarinApp.Models;
 using System.Threading.Tasks;
 using TriviaXamarinApp.Views;
 
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Text;
+using System.Windows.Input;
+
 
 namespace TriviaXamarinApp
 {
-    public partial class App : Application
+    public partial class App : Application, INotifyPropertyChanged
     {
-        public User User { get; set; }
+        public User User;
         public App()
         {
             User = new User();

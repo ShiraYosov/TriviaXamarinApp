@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="TriviaXamarinApp.Views.LoginView"
-             BackgroundImageSource="back2.jpg">
+             BackgroundImageSource="back2.jpg" >
     <ContentPage.Content>
         <StackLayout>
           
@@ -24,8 +24,8 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <Entry x:Name="email" Placeholder="Please enter Email" Text="{Binding Email}" Grid.Row="1" Grid.Column="0"/>
-                <Entry x:Name="pass" Placeholder="Please enter Password" IsPassword="True" Text="{Binding Password}" Grid.Row="2" Grid.Column="0"/>
+                <Entry x:Name="email" Placeholder="Please enter Email" Text="{Binding Email}" TextColor="Black" Grid.Row="1" Grid.Column="0"/>
+                <Entry x:Name="pass" Placeholder="Please enter Password" IsPassword="True" TextColor="Black" Text="{Binding Password}" Grid.Row="2" Grid.Column="0"/>
             </Grid>
 
             <Frame HeightRequest = "50" Padding="4" CornerRadius="25" WidthRequest = "100" HorizontalOptions="Center" VerticalOptions="Center">

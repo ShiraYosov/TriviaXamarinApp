@@ -141,6 +141,7 @@ namespace TriviaXamarinApp.ViewModels
 
                 if (ok)
                 {
+                    a.User.Questions.Add(aq);
                     await App.Current.MainPage.Navigation.PushAsync(new UsersPageView());
                 }
                 else { Message = "Could not add your question"; }
